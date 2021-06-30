@@ -3,25 +3,70 @@
     <div class="row">
       <div class="col-lg-3">
         <div class="sidebar">
+          <div>
+            <h4 class="filter-title">City</h4>
+            <ul class="filter">
+              <li *ngFor="let city of cities">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="{{city}}" id="{{city}}"
+                  (click)="addFilter($event.target.value)"
+                  >
+                  <label class="form-check-label" for="{{city}}" >
+                   {{city}}
+                  </label>
+                </div>
+              </li>
+            </ul>
+          </div>
 
-          <div class="sidebar_section">
-            <div class="sidebar_section_title">Categories</div>
-            <div class="sidebar_categories">
-              <ul>
-                <li><a href="#">Art & Design</a></li>
-                <li><a href="#">Business</a></li>
-                <li><a href="#">IT & Software</a></li>
-                <li><a href="#">Languages</a></li>
-                <li><a href="#">Programming</a></li>
-              </ul>
-            </div>
+          <div>
+            <h4 class="filter-title">State</h4>
+            <ul class="filter">
+              <li *ngFor="let state of states">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="{{state}}" id="{{state}}"
+                  (click)="addFilter($event.target.value)">
+                  <label class="form-check-label" for="{{state}}">
+                   {{state}}
+                  </label>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 class="filter-title">Type</h4>
+            <ul class="filter">
+              <li *ngFor="let type of types">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="{{type}}" id="{{type}}"
+                  (click)="addFilter($event.target.value)">
+                  <label class="form-check-label" for="{{type}}">
+                   {{type}}
+                  </label>
+                </div>
+              </li>
+            </ul>
           </div>
 
         </div>
       </div>
 
       <div class="col-lg-9">
-        <div class="reviews_container">
+        <div class="row" *ngIf="isloading">
+          <div class="col-lg-4" *ngFor="let row of [1,2,3,4,5,6]">
+            <ngx-skeleton-loader
+            animation="progress"
+              [theme]="{
+                'border-radius': '2px',
+                height: '200px',
+                'background-color': '#fffff',
+                border: '1px solid white'
+              }"
+            ></ngx-skeleton-loader>
+          </div>
+        </div>
+        <div class="reviews_container" *ngIf="!isloading">
           <div class="row reviews_row">
             <!-- review -->
             <div class="col-lg-4 review_col" *ngFor="let d of data">
