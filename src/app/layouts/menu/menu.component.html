@@ -1,0 +1,106 @@
+<!-- Header -->
+
+<header class="header" [class.scrolled]="scrollPostion > 100">
+
+  <!-- Top Bar -->
+  <div class="top_bar">
+    <div class="top_bar_container">
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <div class="top_bar_content d-flex flex-row align-items-center justify-content-start">
+              <ul class="top_bar_contact_list">
+                <li><div class="question">Have any questions?</div></li>
+                <li>
+                  <i class="fa fa-phone" aria-hidden="true"></i>
+                  <div>001-1234-88888</div>
+                </li>
+                <li>
+                  <i class="fa fa-envelope-o" aria-hidden="true"></i>
+                  <div>info.deercreative@gmail.com</div>
+                </li>
+              </ul>
+              <div class="top_bar_login ml-auto">
+                <ul class="social_button">
+                  <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                  <li><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
+                  <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                  <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header Content -->
+  <div class="header_container">
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <div class="header_content d-flex flex-row align-items-center justify-content-start">
+            <div class="logo_container">
+              <a  routerLink="/">
+                <img src="../assets/images/logo.png" alt="" class="logo">
+              </a>
+            </div>
+            <nav class="main_nav_contaner ml-auto">
+              <ul class="main_nav">
+                <li><a routerLink="/">Home</a></li>
+                <li><a routerLink="/about">About</a></li>
+                <li><a routerLink="/colleges">Colleges</a></li>
+                <li><a routerLink="/exams">Exams</a></li>
+                <li><a href="http://collegeoption.ml/" target="_blank">Mock Test</a></li>
+                <li><a routerLink="/contact">Contact</a></li>
+              </ul>
+
+              <!-- Hamburger -->
+              <div class="hamburger menu_mm" (click)="toggleMenu()">
+                <i class="fa fa-bars menu_mm" aria-hidden="true"></i>
+              </div>
+            </nav>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+
+<!-- Menu -->
+
+<div class="menu d-flex flex-column align-items-end justify-content-start text-right menu_mm trans_400"
+[class.active] = "menuToggle == true">
+  <div class="menu_close_container" ><div class="menu_close" (click)="toggleMenu()"><div></div><div></div></div></div>
+  <nav class="menu_nav">
+    <ul class="menu_mm">
+      <li class="menu_mm"
+          (click)="toggleMenu()">
+          <a routerLink="/">Home</a>
+      </li>
+      <li class="menu_mm"
+          (click)="toggleMenu()">
+          <a routerLink="/about">About</a>
+      </li>
+      <li class="menu_mm"
+          (click)="toggleMenu()">
+          <a routerLink="/colleges">Colleges</a>
+      </li>
+      <li class="menu_mm"
+          (click)="toggleMenu()">
+          <a routerLink="/exams">Exams</a>
+      </li>
+      <li class="menu_mm"
+          (click)="toggleMenu()">
+          <a href="http://collegeoption.ml/" target="_blank">Mock Test</a>
+      </li>
+      <li class="menu_mm"
+          (click)="toggleMenu()">
+          <a routerLink="/contact">Contact</a>
+      </li>
+    </ul>
+  </nav>
+</div>
