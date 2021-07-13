@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { ViewportScroller } from '@angular/common';
+import { Component, HostListener, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-menu',
@@ -7,21 +8,31 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MenuComponent implements OnInit {
 
-  public menuToggle = false;
+  public Toggle = false;
   public scrollPostion = 0;
+
+  @HostListener("window:scroll", []) onWindowScroll() {
+    const YP = window.pageYOffset ||document.documentElement.scrollTop || document.body.scrollTop || 0;
+    this.scrollPostion = YP;
+    // console.info(YP);
+  }
 
   constructor( ) {
 
    }
 
   ngOnInit(): void {
+
+    // Will not work In SSR
     // window.addEventListener("scroll", (event) => {
     //   this.scrollPostion = window.scrollY;
     // });
+
   }
 
-  toggleMenu(){
-    this.menuToggle = !this.menuToggle;
+  toggle(){
+    console.log(this.Toggle)
+    this.Toggle = !this.Toggle;
   }
 
 }

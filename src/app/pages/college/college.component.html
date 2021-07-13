@@ -1,1 +1,275 @@
-<p>college works!</p>
+<app-reviewmenu></app-reviewmenu>
+
+<div id="reviewHeader" style="background-image: url({{review.featured_image}});" *ngIf="review">
+  <div class="basicInfoWrapper cover-container d-flex p-3 mx-auto my-auto flex-column">
+    <main role="main" class="inner cover">
+      <div class="row justify-content-center">
+        <div class="col-md-2 text-center logoWrapper">
+          <img [src]="review.logo" alt="logo" class="logo">
+        </div>
+        <div class="col-md-10">
+          <div class="row justify-content-center">
+            <div class="col-12 text-center">
+              <h3 class="title">{{review.college_name}}</h3>
+            </div>
+            <div class="col-12 text-center">
+              <div>
+                <p [innerHtml]="review.basic_info|safeHtml"></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+
+<div class="review">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8">
+        <div class="review_content" *ngIf="review">
+
+          <div class="review_title">{{review.college_name|titlecase}}</div>
+
+          <div id="basic" class="review_subtitle">Basic info</div>
+          <hr class="review-hr">
+          <div>
+            <p>
+              <span class="listp">College name:</span>{{review.college_name}}
+            </p>
+            <p>
+              <span class="listp">Also known as:</span>{{review.more_name}}
+            </p>
+            <p>
+              <span class="listp"> College type:</span>{{review.college_type}}
+            </p>
+            <p>
+              <span class="listp">Foundation year:</span> {{review.foundation_year}}
+            </p>
+            <p>
+              <span class="listp"> Campus area:</span>{{review.campus_area}}
+            </p>
+            <p>
+              <span class="listp">Location:</span>{{review.college_city}} ,  {{review.college_state[1]}}
+            </p>
+          </div>
+
+          <div id="connectivity" class="review_subtitle">Connectivity</div>
+          <hr class="review-hr">
+          <p *ngFor="let connect of review.connectivity">
+            <span class="listp">{{connect.mode}}:</span>{{connect.mode_description}}
+          </p>
+
+          <div id="ranking" class="review_subtitle">Ranking</div>
+          <hr class="review-hr">
+          <div class="table-responsive">
+            <table class="table table-bordered table-hover text-center">
+              <thead>
+                <tr>
+                  <th><span class="listp">Category</span></th>
+                  <th><span class="listp">Rank (year)</span></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let rank of review.ranking">
+                  <td>{{rank.category}}</td>
+                  <td>{{rank.rank}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div id="eligibility_criteria" class="review_subtitle">Eligibility Criteria</div>
+          <hr class="review-hr">
+          <p *ngFor="let eligibility of review.eligibility_criteria">
+            {{eligibility.eligibility}}
+          </p>
+
+          <div id="admission_proccess" class="review_subtitle">Admission Proccess</div>
+          <hr class="review-hr">
+          <p *ngFor="let admission of review.admission_proccess">
+            {{admission.admission}}
+          </p>
+
+          <div id="courses_offered" class="review_subtitle">Courses Offered</div>
+          <hr class="review-hr">
+          <div class="row">
+            <div class="col-md-12">
+              <ul class="list-group" *ngFor="let course of review.offered_courses">
+                <li class="list-group-item custom-list" (click)="collapse('course_'+course.course_name)">
+                  <p class="m-0">{{course.course_name |uppercase}}<i class="fa fa-arrow-right" style="float: right;"></i></p>
+                </li>
+                <li class="list-group-item custom-list-content"
+                  *ngIf="collapseId === 'course_'+course.course_name">
+                  <p *ngFor="let branch of course.branch_name.split(',')">
+                    {{branch}}
+                  </p>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div id="seat_matrix" class="review_subtitle">Seat Matrix</div>
+          <hr class="review-hr">
+          <div class="row">
+            <div class="col-md-12">
+              <ul class="list-group" *ngFor="let course of review.seat_matrix">
+                <li class="list-group-item custom-list" (click)="collapse('seat_'+course.course)">
+                  <p class="m-0">{{course.course |uppercase}}
+                    <i class="fa fa-arrow-right" style="float: right;"></i></p>
+                </li>
+                <li class="list-group-item custom-list-content"
+                  *ngIf="collapseId === 'seat_'+course.course">
+                  <p *ngFor="let seat of course.seats.split(',')">
+                    {{seat}}
+                  </p>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div id="cuttoff" class="review_subtitle">Cuttoff</div>
+          <hr class="review-hr">
+          <div class="col-md-6">
+            <ul class="list-group">
+              <a href="college/{{review.slug}}/cutoff?year=2020#{{review._id}}" target="_blank">
+                <li class="list-group-item">
+                  <p class="m-0">Check cutoff of 2020
+                    <i class="fa fa-arrow-right" style="float: right;"></i></p>
+                </li>
+              </a>
+              <a href="college/{{review.slug}}/cutoff?year=2019#{{review._id}}" target="_blank">
+                <li class="list-group-item mt-2">
+                  <p class="m-0">Check cutoff of 2019
+                    <i class="fa fa-arrow-right" style="float: right;"></i></p>
+                </li>
+              </a>
+            </ul>
+          </div>
+
+          <div id="alumni" class="review_subtitle">Alumni</div>
+          <hr class="review-hr">
+          <div class="row">
+            <div class="col-md-4 my-2" *ngFor="let alumni of review.alumni">
+              <div class="card" style="height: 100%">
+                <img [src]="alumni.image" class="card-img-top" alt="">
+                <div class="card-body" style="border-top: 1px solid rgba(0,0,0,.125);">
+                  <p class="card-text text-center m-0">{{alumni.description}}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div id="fees" class="review_subtitle">Fees - College Fees and Hostel Fees</div>
+          <hr class="review-hr">
+          <div class="">
+            <table class="table table-bordered table-hover text-center">
+              <tbody>
+                <tr *ngFor="let fee of review.fees">
+                  <td colspan="2"  style="border: none;padding: 15px;"
+                    *ngIf="fee.particular.trim().toLowerCase() === 'type' && fee.particular.trim().toLowerCase() != 'note'">
+                    <span class="listp">{{fee.fees | uppercase}}</span>
+                  </td>
+                  <td *ngIf="fee.particular.trim().toLowerCase() != 'type' && fee.particular.trim().toLowerCase() != 'note' ">{{fee.particular}}</td>
+                  <td *ngIf="fee.particular.trim().toLowerCase() != 'type' && fee.particular.trim().toLowerCase() != 'note' ">{{fee.fees}}</td>
+
+                  <td colspan="2" style="border: none;padding: 15px; text-align: left;"
+                  *ngIf="fee.particular.trim().toLowerCase() !== 'type' && fee.particular.trim().toLowerCase() === 'note'">
+                    {{fee.fees}}
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div id="fee_waiver" class="review_subtitle">Scholarship or Fee Waiver</div>
+          <hr class="review-hr">
+          <p *ngFor="let feewaiver of review.fee_waiver">
+            {{feewaiver.feewaiver}}
+          </p>
+
+          <div id="placements" class="review_subtitle">Placements</div>
+          <hr class="review-hr">
+          <div [innerHtml]="review.placements|safeHtml"></div>
+
+          <div id="facilities" class="review_subtitle">Facilities</div>
+          <hr class="review-hr">
+          <p *ngFor="let facility of review.facilities">
+            {{facility.facility}}
+          </p>
+
+          <div id="college_pros" class="review_subtitle">College Pros</div>
+          <hr class="review-hr">
+          <p *ngFor="let pros of review.college_pros">
+            {{pros.pros}}
+          </p>
+
+          <div id="college_cons" class="review_subtitle">College Cons</div>
+          <hr class="review-hr">
+          <p *ngFor="let cons of review.college_cons">
+            {{cons.cons}}
+          </p>
+
+          <div id="review_ideo" class="review_subtitle">Review Video</div>
+          <hr class="review-hr">
+          <iframe width="100%" height="350" frameborder="0"
+          [src]="review_video" *ngIf="review.review_video"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+          <div id="faq" class="review_subtitle">FAQ</div>
+          <hr class="review-hr">
+          <div class="row">
+            <div class="col-md-12">
+              <ul class="list-group" *ngFor="let faq of review.faq; let i = index;">
+                <li class="list-group-item custom-list" (click)="collapse('faq_'+i)">
+                  <p class="m-0">{{faq.question}}<i class="fa fa-arrow-right" style="float: right;"></i></p>
+                </li>
+                <li class="list-group-item custom-list-content"
+                  *ngIf="collapseId === 'faq_'+i">
+                  <p>{{faq.answer}}</p>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div id="college_contact" class="review_subtitle">College Contact Details</div>
+          <hr class="review-hr">
+          <p>
+            <span class="listp">Address:</span>{{review.college_contact.address}}
+          </p>
+          <p>
+            <span class="listp">Website:</span>
+            <a href="{{review.college_contact.website}}" target="_blank">{{review.college_contact.website}}</a>
+          </p>
+          <p>
+            <span class="listp">Email:</span>
+            <a href="mailto:{{review.college_contact.email}}">{{review.college_contact.email}}</a>
+          </p>
+          <p>
+            <span class="listp">Telephone:</span>
+            <a href="tel:{{review.college_contact.telephone}}">{{review.college_contact.telephone}}</a>
+          </p>
+          <p>
+            <span class="listp">Fax:</span>{{review.college_contact?.fax}}
+          </p>
+
+        </div>
+
+        <!-- Share button and review meta  -->
+        <app-socialshare *ngIf="review" [title]="review.college_name"></app-socialshare>
+
+        <!-- Comments -->
+        <div class="comments_container">
+          <div class="comments_title">Comments</div>
+          <div id="disqus_thread"></div>
+        </div>
+      </div>
+
+      <!-- review Sidebar -->
+      <div class="col-lg-4">
+        <app-sidebar></app-sidebar>
+      </div>
+
+    </div>
+  </div>
+</div>

@@ -8,7 +8,7 @@
       <div class="container">
         <div class="row">
           <div class="col">
-            <div class="top_bar_content d-flex flex-row align-items-center justify-content-start">
+            <div class="top_bar_content d-flex flex-row align-items-center justify-content-between">
               <ul class="top_bar_contact_list">
                 <li><div class="question">Have any questions?</div></li>
                 <li>
@@ -40,7 +40,7 @@
     <div class="container">
       <div class="row">
         <div class="col">
-          <div class="header_content d-flex flex-row align-items-center justify-content-start">
+          <div class="header_content d-flex flex-row align-items-center justify-content-between">
             <div class="logo_container">
               <a  routerLink="/">
                 <img src="../assets/images/logo.png" alt="" class="logo">
@@ -57,7 +57,7 @@
               </ul>
 
               <!-- Hamburger -->
-              <div class="hamburger menu_mm" (click)="toggleMenu()">
+              <div class="hamburger menu_mm" (click)="toggle()">
                 <i class="fa fa-bars menu_mm" aria-hidden="true"></i>
               </div>
             </nav>
@@ -73,32 +73,32 @@
 <!-- Menu -->
 
 <div class="menu d-flex flex-column align-items-end justify-content-start text-right menu_mm trans_400"
-[class.active] = "menuToggle == true">
-  <div class="menu_close_container" ><div class="menu_close" (click)="toggleMenu()"><div></div><div></div></div></div>
+[class.active] = "Toggle == true">
+  <div class="menu_close_container" ><div class="menu_close" (click)="toggle()"><div></div><div></div></div></div>
   <nav class="menu_nav">
     <ul class="menu_mm">
       <li class="menu_mm"
-          (click)="toggleMenu()">
+          (click)="toggle()">
           <a routerLink="/">Home</a>
       </li>
       <li class="menu_mm"
-          (click)="toggleMenu()">
+          (click)="toggle()">
           <a routerLink="/about">About</a>
       </li>
       <li class="menu_mm"
-          (click)="toggleMenu()">
+          (click)="toggle()">
           <a routerLink="/colleges">Colleges</a>
       </li>
       <li class="menu_mm"
-          (click)="toggleMenu()">
+          (click)="toggle()">
           <a routerLink="/exams">Exams</a>
       </li>
       <li class="menu_mm"
-          (click)="toggleMenu()">
+          (click)="toggle()">
           <a href="http://collegeoption.ml/" target="_blank">Mock Test</a>
       </li>
       <li class="menu_mm"
-          (click)="toggleMenu()">
+          (click)="toggle()">
           <a routerLink="/contact">Contact</a>
       </li>
     </ul>

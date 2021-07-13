@@ -1,0 +1,127 @@
+<div class="header review_header" [class.scrolled]="scrollPostion > 100">
+
+  <div class="header_container">
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <div class="header_content review_header_content d-flex flex-row align-items-center justify-content-start">
+            <nav class="main_nav_contaner">
+              <div class="hamburger menu_mm" (click)="toggleMenu()">
+                <i class="fa fa-bars menu_mm" aria-hidden="true"></i>
+              </div>
+              <ul class="main_nav">
+                <li (click)="scrollTo('basic');"
+                  style="font-size: 16px;margin: 0px 10px; cursor: pointer;">Basic info
+                </li>
+                <!-- <li (click)="scrollTo('connectivity');"
+                  style="font-size: 16px;margin: 0px 10px; cursor: pointer;">Connectivity
+                </li> -->
+                <li (click)="scrollTo('ranking');"
+                  style="font-size: 16px;margin: 0px 10px; cursor: pointer;">Ranking
+                </li>
+                <li (click)="scrollTo('eligibility_criteria');"
+                  style="font-size: 16px;margin: 0px 10px; cursor: pointer;">Eligibility Criteria
+                </li>
+                <li (click)="scrollTo('admission_proccess');"
+                  style="font-size: 16px;margin: 0px 10px; cursor: pointer;">Admission Proccess
+                </li>
+                <li (click)="scrollTo('courses_offered');"
+                  style="font-size: 16px;margin: 0px 10px; cursor: pointer;">Courses Offered
+                </li>
+                <li (click)="scrollTo('seat_matrix');"
+                  style="font-size: 16px;margin: 0px 10px; cursor: pointer;">Seat Matrix
+                </li>
+                <li (click)="scrollTo('cuttoff');"
+                  style="font-size: 16px;margin: 0px 10px; cursor: pointer;">Cuttoff
+                </li>
+                <!-- <li (click)="scrollTo('alumni');"
+                  style="font-size: 16px;margin: 0px 10px; cursor: pointer;">Alumni
+                </li> -->
+                <li (click)="scrollTo('fees');"
+                  style="font-size: 16px;margin: 0px 10px; cursor: pointer;">Fees
+                </li>
+                <li (click)="scrollTo('placements');"
+                  style="font-size: 16px;margin: 0px 10px; cursor: pointer;">Placements
+                </li>
+                <!-- <li (click)="scrollTo('college_pros');"
+                  style="font-size: 16px;margin: 0px 10px; cursor: pointer;">College Pros
+                </li>
+                <li (click)="scrollTo('college_cons');"
+                  style="font-size: 16px;margin: 0px 10px; cursor: pointer;">College Cons
+                </li>
+                <li (click)="scrollTo('review_video');"
+                  style="font-size: 16px;margin: 0px 10px; cursor: pointer;">Review Video
+                </li>
+                <li (click)="scrollTo('faq');"
+                  style="font-size: 16px;margin: 0px 10px; cursor: pointer;">FAQ
+                </li> -->
+                <li (click)="scrollTo('college_contact');"
+                  style="font-size: 16px;margin: 0px 10px; cursor: pointer;">Contact
+                </li>
+              </ul>
+            </nav>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="menu d-flex flex-column align-items-end justify-content-start text-right menu_mm trans_400"
+[class.active] = "menuToggle == true">
+  <div class="menu_close_container" ><div class="menu_close" (click)="toggleMenu()"><div></div><div></div></div></div>
+  <nav class="menu_nav">
+    <ul class="menu_mm">
+      <li (click)="scrollTo('basic');"
+                  style="font-size: 16px;margin: 0px 10px; cursor: pointer;">Basic info
+                </li>
+                <li (click)="scrollTo('connectivity');"
+                  style="font-size: 16px;margin: 0px 10px; cursor: pointer;">Connectivity
+                </li>
+                <li (click)="scrollTo('ranking');"
+                  style="font-size: 16px;margin: 0px 10px; cursor: pointer;">Ranking
+                </li>
+                <li (click)="scrollTo('eligibility_criteria');"
+                  style="font-size: 16px;margin: 0px 10px; cursor: pointer;">Eligibility Criteria
+                </li>
+                <li (click)="scrollTo('admission_proccess');"
+                  style="font-size: 16px;margin: 0px 10px; cursor: pointer;">Admission Proccess
+                </li>
+                <li (click)="scrollTo('courses_offered');"
+                  style="font-size: 16px;margin: 0px 10px; cursor: pointer;">Courses Offered
+                </li>
+                <li (click)="scrollTo('seat_matrix');"
+                  style="font-size: 16px;margin: 0px 10px; cursor: pointer;">Seat Matrix
+                </li>
+                <li (click)="scrollTo('cuttoff');"
+                  style="font-size: 16px;margin: 0px 10px; cursor: pointer;">Cuttoff
+                </li>
+                <li (click)="scrollTo('alumni');"
+                  style="font-size: 16px;margin: 0px 10px; cursor: pointer;">Alumni
+                </li>
+                <li (click)="scrollTo('fees');"
+                  style="font-size: 16px;margin: 0px 10px; cursor: pointer;">Fees
+                </li>
+                <li (click)="scrollTo('placements');"
+                  style="font-size: 16px;margin: 0px 10px; cursor: pointer;">Placements
+                </li>
+                <li (click)="scrollTo('college_pros');"
+                  style="font-size: 16px;margin: 0px 10px; cursor: pointer;">College Pros
+                </li>
+                <li (click)="scrollTo('college_cons');"
+                  style="font-size: 16px;margin: 0px 10px; cursor: pointer;">College Cons
+                </li>
+                <li (click)="scrollTo('review_video');"
+                  style="font-size: 16px;margin: 0px 10px; cursor: pointer;">Review Video
+                </li>
+                <li (click)="scrollTo('faq');"
+                  style="font-size: 16px;margin: 0px 10px; cursor: pointer;">FAQ
+                </li>
+                <li (click)="scrollTo('college_contact');"
+                  style="font-size: 16px;margin: 0px 10px; cursor: pointer;">Contact
+                </li>
+    </ul>
+  </nav>
+</div>

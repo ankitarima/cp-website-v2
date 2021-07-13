@@ -1,0 +1,90 @@
+<section class="container">
+  <div class="row">
+    <div class="col-12 my-4 text-center">
+      <form class="row align-items-center" [formGroup]="filterForm" (ngSubmit)="filter()">
+        <div class="col-md-3 my-1">
+          <div class="input-group">
+            <div class="input-group-text">Gender</div>
+            <select class="form-select filter_input" name="Gender" formControlName="gender">
+              <option value="">Any</option>
+              <option value="Gender-Neutral">Gender Neutral</option>
+              <option value="Female-only (including Supernumerary)">Female</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-md-3 my-1">
+          <div class="input-group">
+            <div class="input-group-text">Seat Type</div>
+            <select class="form-select filter_input" name="SeatType" formControlName="SeatType">
+              <option value="">Any</option>
+              <option value="OPEN">OPEN</option>
+              <option value="OPEN (PwD)">OPEN (PwD)</option>
+              <option value="EWS">EWS</option>
+              <option value="EWS (PwD)">EWS (PwD)</option>
+              <option value="OBC-NCL">OBC-NCL</option>
+              <option value="OBC-NCL (PwD)">OBC-NCL (PwD)</option>
+              <option value="SC">SC</option>
+              <option value="SC (PwD)">SC (PwD)</option>
+              <option value="ST">ST</option>
+              <option value="ST (PwD)">ST (PwD)</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-md-3 my-1">
+          <div class="input-group">
+            <div class="input-group-text">Round</div>
+            <select class="form-select filter_input" name="round" formControlName="round">
+              <option value="">Any</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-md-3 my-1">
+          <button type="submit" class="btn btn-primary filter_form_button" style="width: 100%;"> Filter</button>
+          <!-- <button type="button" class="btn btn-primary filter_form_button" (click)="reset()">
+            <i class="fa fa-undo"></i></button> -->
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-12">
+      <div class="table-responsive">
+        <table class="table table-bordered">
+          <thead class="table-light">
+            <tr style="vertical-align: middle;">
+              <th scope="col">Institute</th>
+              <th scope="col">Branch</th>
+              <th scope="col">Quota</th>
+              <th scope="col">Gender</th>
+              <th scope="col">Seat Type</th>
+              <th scope="col">Opening Rank</th>
+              <th scope="col">Closing Rank</th>
+              <th scope="col">Round</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let cutoff of cutoffs">
+              <td>{{cutoff.Institute}}</td>
+              <td>{{cutoff.Branch}}</td>
+              <td>{{cutoff.Quota}}</td>
+              <td>{{cutoff.Gender}}</td>
+              <td>{{cutoff.SeatType}}</td>
+              <td>{{cutoff.OpeningRank}}</td>
+              <td>{{cutoff.ClosingRank}}</td>
+              <td>{{cutoff.Round}}</td>
+            </tr>
+            <tr *ngIf="cutoffs.length == 0">
+              <td colspan="8" class="text-center"> No Data</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>

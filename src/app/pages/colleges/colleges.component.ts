@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { MainService } from 'src/app/shared/main.service';
+import { ActivatedRoute } from '@angular/router';
+import { MainService } from 'src/app/shared/services/main.service';
 
 @Component({
   selector: 'app-colleges',
@@ -17,15 +18,31 @@ export class CollegesComponent implements OnInit {
   public data:any;
   public isloading = true;
 
+  public topColleges = false;
+
   constructor(
+    private route: ActivatedRoute,
     private mainService: MainService
   ) { }
 
   ngOnInit(): void {
-    this.mainService.getBootcamps().subscribe((res:any)=>{
-      this.data = res.data;
-      this.isloading = false;
-    })
+
+    this.route.queryParams.subscribe(params => {
+      if(params.topColleges){
+        if(params.topColleges  === 'true'){
+          this.topColleges = true;
+          this.mainService.filteredReviews('tags=iit').subscribe((res:any)=>{
+            this.data = res.data;
+            this.isloading = false;
+          })
+        }
+      }else{
+        this.mainService.getReviews().subscribe((res:any)=>{
+          this.data = res.data;
+          this.isloading = false;
+        })
+      }
+    });
   }
 
   addFilter(value){

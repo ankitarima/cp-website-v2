@@ -1,1 +1,106 @@
-<p>exams works!</p>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8">
+      <div class="row mb-3">
+        <div class="col">
+          <div class="section_title_container text-center">
+            <h2 class="section_title">Exams</h2>
+          </div>
+        </div>
+      </div>
+      <div class="exmas_content" *ngIf="exams">
+        <div class="card mb-2" *ngFor="let exam of exams">
+          <div class="row g-0">
+            <div class="col-md-2 text-center" style="align-self: center;">
+              <img [src]="exam.featured_image" class="img-fluid p-2" alt="">
+            </div>
+            <div class="col-md-10">
+              <div class="card-body">
+                <h3 class="card-title">{{exam.exam_name|titlecase}}</h3>
+                <p class="card-text">{{exam.exam_description}}</p>
+                <button class="btn exams_btn" [routerLink]="['/exam/'+exam.slug]" >Know More <i class="fa  fa-arrow-right px-2"></i></button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- review Sidebar -->
+    <div class="col-lg-4">
+      <div class="sidebar">
+
+        <div class="sidebar_section">
+          <div class="sidebar_section_title">Categories</div>
+          <div class="sidebar_categories">
+            <ul class="categories_list">
+              <li><a href="#" class="clearfix">Art & Design<span>(25)</span></a></li>
+              <li><a href="#" class="clearfix">Business<span>(10)</span></a></li>
+              <li><a href="#" class="clearfix">IT & Software<span>(22)</span></a></li>
+              <li><a href="#" class="clearfix">Languages<span>(12)</span></a></li>
+              <li><a href="#" class="clearfix">Programming<span>(18)</span></a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="sidebar_section">
+          <div class="sidebar_section_title">Latest Courses</div>
+          <div class="sidebar_latest">
+            <div class="latest d-flex flex-row align-items-start justify-content-start">
+              <div class="latest_image"><div><img src="../assets/images/latest_1.jpg" alt=""></div></div>
+              <div class="latest_content">
+                <div class="latest_title"><a href="course.html">How to Design a Logo a Beginners Course</a></div>
+                <div class="latest_date">november 11, 2017</div>
+              </div>
+            </div>
+
+            <div class="latest d-flex flex-row align-items-start justify-content-start">
+              <div class="latest_image"><div><img src="../assets/images/latest_2.jpg" alt=""></div></div>
+              <div class="latest_content">
+                <div class="latest_title"><a href="course.html">Photography for Beginners Masterclass</a></div>
+                <div class="latest_date">november 11, 2017</div>
+              </div>
+            </div>
+            <div class="latest d-flex flex-row align-items-start justify-content-start">
+              <div class="latest_image"><div><img src="../assets/images/latest_3.jpg" alt=""></div></div>
+              <div class="latest_content">
+                <div class="latest_title"><a href="course.html">The Secrets of Body Language</a></div>
+                <div class="latest_date">november 11, 2017</div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Tags -->
+        <div class="sidebar_section">
+          <div class="sidebar_section_title">Tags</div>
+          <div class="sidebar_tags">
+            <ul class="tags_list">
+              <li><a href="#">creative</a></li>
+              <li><a href="#">unique</a></li>
+              <li><a href="#">photography</a></li>
+              <li><a href="#">ideas</a></li>
+              <li><a href="#">wordpress</a></li>
+              <li><a href="#">startup</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Banner -->
+        <div class="sidebar_section">
+          <div class="sidebar_banner d-flex flex-column align-items-center justify-content-center text-center">
+            <div class="sidebar_banner_background" style="background-image:url(../assets/images/banner_1.jpg)"></div>
+            <div class="sidebar_banner_overlay"></div>
+            <div class="sidebar_banner_content">
+              <div class="banner_title">Free Book</div>
+              <div class="banner_button"><a href="#">download now</a></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>

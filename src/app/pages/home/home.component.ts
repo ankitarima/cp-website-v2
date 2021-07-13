@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Meta, Title } from '@angular/platform-browser';
+import { MainService } from 'src/app/shared/services/main.service';
 
 @Component({
   selector: 'app-home',
@@ -8,9 +9,12 @@ import { Meta, Title } from '@angular/platform-browser';
 })
 export class HomeComponent implements OnInit {
 
+  public articles = [] as any;
+
   constructor(
     private meta: Meta,
-    private title: Title
+    private title: Title,
+    private mainService: MainService
   ) {
     this.meta.addTags([
       {name: 'description', content: 'Home page of SEO friendly app'},
@@ -21,6 +25,10 @@ export class HomeComponent implements OnInit {
    }
 
   ngOnInit(): void {
+    this.mainService.getArticles().subscribe((articles:any)=>{
+      this.articles = articles.data
+      console.log(this.articles)
+    })
   }
 
 }

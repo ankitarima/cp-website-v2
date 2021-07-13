@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MainService } from 'src/app/shared/services/main.service';
 
 @Component({
   selector: 'app-exams',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ExamsComponent implements OnInit {
 
-  constructor() { }
+  public exams =[] as any;
+
+  constructor(
+    private mainService: MainService
+  ) { }
 
   ngOnInit(): void {
+    this.mainService.getExams().subscribe((exams:any)=>{
+      this.exams = exams.data
+    })
   }
 
 }

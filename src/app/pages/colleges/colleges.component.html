@@ -70,25 +70,27 @@
           <div class="row reviews_row">
             <!-- review -->
             <div class="col-lg-4 review_col" *ngFor="let d of data">
-              <div class="review">
-                <div class="review_image"><img src="assets/images/course_4.jpg" alt=""></div>
-                <div class="review_body">
-                  <h3 class="review_title"><a href="review.html">{{d.name}}</a></h3>
-                  <div class="review_subtitle">Mr. John Taylor</div>
-                </div>
-                <div class="review_footer">
-                  <div class="review_footer_content d-flex flex-row align-items-center justify-content-center">
-                    <div class="review_info">
-                      <i class="fa fa-graduation-cap" aria-hidden="true"></i>
-                      <span>20 Student</span>
-                    </div>
-                    <div class="review_info">
-                      <i class="fa fa-star" aria-hidden="true"></i>
-                      <span>5 Ratings</span>
+              <a routerLink="/college/{{d.slug}}">
+                <div class="review">
+                  <div class="review_image"><img [src]="d.featured_image" alt=""></div>
+                  <div class="review_body">
+                    <h3 class="review_title"><a routerLink="/college/{{d.slug}}">{{d.college_name}}</a></h3>
+                    <!-- <div class="review_subtitle" [innerHtml]="d.college_contact|safeHtml" ></div> -->
+                  </div>
+                  <div class="review_footer">
+                    <div class="review_footer_content d-flex flex-row align-items-center justify-content-center">
+                      <div class="review_info">
+                        <i class="fa fa-graduation-cap" aria-hidden="true"></i>
+                        <span>20 Student</span>
+                      </div>
+                      <div class="review_info">
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                        <span>5 Ratings</span>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
+              </a>
             </div>
 
           </div>

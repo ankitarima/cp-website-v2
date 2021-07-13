@@ -1,0 +1,23 @@
+.listp{
+  font-weight: 500;
+  font-size: 16px;
+  padding-left: 2px;
+  padding-right: 5px;
+}
+.custom-list{
+  border-radius: 0px;
+  margin: 5px 0px;
+  border: 1px solid rgba(0,0,0,.125);
+}
+
+.custom-list-content{
+  border-radius: 0px;
+  margin: 5px 0px;
+  border: 1px solid rgba(0,0,0,.125);
+}
+
+.custom-list-content:hover{
+  color: #a5a5a5;
+}
+
+
